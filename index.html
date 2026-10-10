@@ -312,6 +312,14 @@
             font-size: 14px;
         }
 
+        .pemutar-lagu {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
         @media (max-width: 640px) {
             .nama-utama {
                 font-size: 28px;
@@ -375,13 +383,13 @@
         <div class="kartu">
             <h3>Siapa Saya?</h3>
             <p>
-                Saya <strong>Syah Daffa ZalvyPutra</strong>, biasa dipanggil daffa atau syahdep, saya adalah <strong>siswa SMAS Sukma Bangsa Lhokseumawe</strong>. Saya lahir di <strong>Lhokseumawe</strong> tepatnya pada<strong>"  7 november 2010"</strong>, 
+                Saya <strong>Syah Daffa ZalvyPutra</strong>, biasa dipanggil daffa atau syahdep, saya adalah <strong>siswa SMAS Sukma Bangsa Lhokseumawe</strong>. Saya lahir di <strong>Lhokseumawe</strong> tepatnya pada <strong>7 November 2010</strong>.
                 Saya bukan orang yang sudah sempurna, tetapi saya tipe orang yang ingin terus maju setiap hari.
             </p>
             <br>
             <p>
                 Saya percaya bahwa latar belakang tidak menjadi penghalang untuk meraih mimpi. Dari kota kecil diujung pesisir, saya ingin belajar
-                banyak hal, terlebihnya tentang budaya dari masing masing negara/suku/ras selain saya suka mempelajari budaya orang lain, saya juga suka membagikan budaya tempat asal saya, contoh seperti tarian, makanan, minuman atau tradisi khas aceh.
+                banyak hal, terlebihnya tentang budaya dari masing-masing negara/suku/ras. Selain saya suka mempelajari budaya orang lain, saya juga suka membagikan budaya tempat asal saya, contoh seperti tarian, makanan, minuman atau tradisi khas Aceh.
             </p>
         </div>
 
@@ -418,24 +426,24 @@
             <div class="grid-prestasi">
                 <div class="prestasi">
                     <h3>Berbicara Didepan Umum</h3>
-                    <p>Saya sangat suka berbicara dan sharing atau speech didepan orang banyak, padahal dulu saya sangat malu untuk berbicara didepan orang banyak, tapi saya merubah sifat itu.</p>
+                    <p>Saya sangat suka berbicara dan berbagi cerita di depan orang banyak. Dulu saya sangat malu, tapi saya berusaha mengubahnya.</p>
                 </div>
                 <div class="prestasi">
                     <h3>Kegiatan Pramuka</h3>
-                    <p>Melatih kedisiplinan, tanggung jawab, kemandirian dan lain lain, dulu saya padahal sangat tidak suka kegiatan pramuka, tapi sekarang jadi suka banget.</p>
+                    <p>Melatih kedisiplinan, tanggung jawab, dan kemandirian. Dulu tidak suka, sekarang jadi sangat suka!</p>
                 </div>
                 <div class="prestasi">
                     <h3>Belajar Teknologi</h3>
-                    <p>Saya sangat suka belajar tentang teknologi sekarang yang sangat canggih, saya jadi tau dan memakai teknologi itu untuk membantu saya, dan sangat bermanfaat.</p>
+                    <p>Saya suka belajar teknologi baru dan menggunakannya untuk hal-hal yang bermanfaat.</p>
                 </div>
-				 </div>
+            </div>
         </div>
     </div>
 
     <div class="halaman" id="tujuan">
         <h2 class="judul-halaman">Tujuan & Mimpi</h2>
         <div class="kartu">
-            <h3>Apa tujuan saya??</h3>
+            <h3>Apa tujuan saya?</h3>
             <p>
                 Saya ingin melanjutkan pendidikan ke jenjang yang lebih tinggi, mendapatkan kesempatan
                 untuk tampil di panggung yang lebih luas, dan membuktikan bahwa siapa pun bisa berkembang
@@ -443,7 +451,7 @@
             </p>
             <br>
             <p>
-                Saya ingin belajar keluar negara, kemudian kembali memberikan manfaat untuk Aceh dan orang-orang
+                Saya ingin belajar ke luar negeri, kemudian kembali memberikan manfaat untuk Aceh dan orang-orang
                 di sekitar saya.
             </p>
         </div>
@@ -467,13 +475,21 @@
             </p>
             <div class="tombol-grup">
                 <a href="https://www.tiktok.com/@syadepzalvyp?_r=1&_t=ZS-9APiuUDHzlg" target="_blank" class="tombol outline">TIKTOK</a>
-				<a href="https://www.instagram.com/ssyahdffaaa?dlrf=eXZ3ODVwZ2N1aWVs&utm_source=qr" target="_blank" class="tombol outline">INSTAGRAM</a>
-				<a href="https://www.threads.com/@ssyahdffaaa?igshid=NTc4MTIwNjQ2YQ==" target="_blank" class="tombol outline">THREADS</a>
+                <a href="https://www.instagram.com/ssyahdffaaa?dlrf=eXZ3ODVwZ2N1aWVs&utm_source=qr" target="_blank" class="tombol outline">INSTAGRAM</a>
+                <a href="https://www.threads.com/@ssyahdffaaa?igshid=NTc4MTIwNjQ2YQ==" target="_blank" class="tombol outline">THREADS</a>
             </div>
             <p style="margin-top: 18px; text-align: center; color: var(--teks-lembut);">
                 Lhokseumawe, Aceh — Indonesia
             </p>
         </div>
+    </div>
+
+    <div class="pemutar-lagu">
+        <h3>🎧 Lagu Kesukaanku</h3>
+        <audio id="laguku" loop controls style="width: 100%; margin-top: 10px;">
+            <source src="laguku.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar lagu.
+        
     </div>
 
     <footer>
@@ -488,6 +504,8 @@
     const menu = document.getElementById('menu');
     const semuaHalaman = document.querySelectorAll('.halaman');
     const linkMenu = document.querySelectorAll('[data-halaman]');
+    const lagu = document.getElementById('laguku');
+    let sudahMain = false;
 
     tombolMenu.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -510,6 +528,15 @@
     document.addEventListener('click', (e) => {
         if (!tombolMenu.contains(e.target) && !menu.contains(e.target)) {
             menu.classList.remove('tampil');
+        }
+    });
+
+    // Lagu main saat halaman diklik
+    document.addEventListener('mousedown', function mainLagu() {
+        if (!sudahMain) {
+            lagu.play();
+            sudahMain = true;
+            document.removeEventListener('mousedown', mainLagu);
         }
     });
 </script>
