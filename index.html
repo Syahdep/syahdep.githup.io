@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syah Daffa ZalvyPutra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-utama: #f7f3ea;
+            --bg-lembut: #ffffff;
+            --bg-kartu: #f0ebe3;
+            --teks-utama: #2d2d2d;
+            --teks-lembut: #6b7280;
+            --teks-fokus: #4a5568;
+            --hijau-soft: #a7c9a5;
+            --hijau-gelap: #6b9080;
+            --krem-soft: #fcecdb;
+            --coklat-soft: #d6b98c;
+            --garis: #e2dcd0;
+            --putih: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Poppins', 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--bg-utama) 0%, #e9dfd0 100%);
+            color: var(--teks-utama);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .atas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(247, 243, 234, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--garis);
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--hijau-soft), var(--hijau-gelap));
+            color: var(--putih);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            box-shadow: 0 4px 14px rgba(107, 144, 128, 0.45);
+            letter-spacing: 1px;
+        }
+
+        .tombol-menu {
+            font-size: 26px;
+            color: var(--teks-utama);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            line-height: 1;
+        }
+
+        .menu {
+            position: absolute;
+            top: 100%;
+            right: 24px;
+            background: var(--putih);
+            border: 1px solid var(--garis);
+            border-radius: 16px;
+            padding: 10px 0;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: none;
+            z-index: 101;
+        }
+
+        .menu.tampil {
+            display: block;
+        }
+
+        .menu a {
+            display: block;
+            color: var(--teks-utama);
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
+
+        .menu a:hover {
+            background: var(--bg-kartu);
+            color: var(--hijau-gelap);
+        }
+
+        .bungkus {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 90px 24px 50px;
+        }
+
+        .halaman {
+            display: none;
+            animation: fadeUp 0.45s ease forwards;
+        }
+
+        .halaman.aktif {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .halaman-utama {
+            text-align: center;
+            padding: 60px 20px 50px;
+            background: var(--putih);
+            border-radius: 24px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+
+        .foto-profil {
+            width: 220px;
+            height: 220px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 6px solid var(--hijau-soft);
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(107, 144, 128, 0.35);
+        }
+
+        .nama-utama {
+            font-size: 34px;
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--teks-utama);
+            margin-bottom: 8px;
+        }
+
+        .sub-judul {
+            font-size: 16px;
+            color: var(--teks-lembut);
+            margin-bottom: 6px;
+        }
+
+        .lokasi {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 18px;
+            background: var(--krem-soft);
+            color: var(--teks-fokus);
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .judul-halaman {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--teks-utama);
+            text-align: center;
+        }
+
+        .kartu {
+            background: var(--putih);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            border: 1px solid var(--garis);
+        }
+
+        .kartu h3 {
+            color: var(--hijau-gelap);
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .grid-galeri {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+        }
+
+        .grid-galeri img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid var(--garis);
+        }
+
+        .grid-prestasi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+
+        .prestasi {
+            background: var(--bg-kartu);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid var(--hijau-soft);
+        }
+
+        .prestasi h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .prestasi p {
+            font-size: 14px;
+            color: var(--teks-lembut);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--teks-utama);
+        }
+
+        li::marker {
+            color: var(--hijau-gelap);
+            font-weight: bold;
+        }
+
+        .tombol-grup {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .tombol {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        .tombol.utama {
+            background: linear-gradient(135deg, var(--hijau-soft), var(--hijau-gelap));
+            color: var(--putih);
+        }
+
+        .tombol.utama:hover {
+            filter: brightness(1.05);
+        }
+
+        .tombol.outline {
+            border: 2px solid var(--hijau-gelap);
+            color: var(--hijau-gelap);
+            background: transparent;
+        }
+
+        .tombol.outline:hover {
+            background: var(--hijau-gelap);
+            color: var(--putih);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--garis);
+            color: var(--teks-lembut);
+            font-size: 14px;
+        }
+
+        .pemutar-lagu {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .nama-utama {
+                font-size: 28px;
+            }
+
+            .foto-profil {
+                width: 180px;
+                height: 180px;
+            }
+
+            .kartu {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="atas">
+    <div class="logo">
+    <img src="LOGO SD.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+</div>
+    <button class="tombol-menu" id="tombolMenu">≡</button>
+    <div class="menu" id="menu">
+        <a href="#" data-halaman="beranda">HOME</a>
+        <a href="#" data-halaman="tentang">ABOUT ME</a>
+        <a href="#" data-halaman="galeri">GALLERY</a>
+        <a href="#" data-halaman="prestasi">ACTIVITY</a>
+        <a href="#" data-halaman="tujuan">GOALS & DREAMS</a>
+        <a href="#" data-halaman="kontak">CONTACT</a>
+    </div>
+</div>
+
+<div class="bungkus">
+
+    <div class="halaman aktif" id="beranda">
+        <div class="halaman-utama">
+            <img src="fotocahdep.jpg" alt="Syah Daffa ZalvyPutra" class="foto-profil">
+            <h1 class="nama-utama">SYAH DAFFA ZALVYPUTRA</h1>
+            <p class="sub-judul">Siswa SMA • Lhokseumawe • Aceh</p>
+            <span class="lokasi">Indonesia</span>
+        </div>
+
+        <div class="kartu">
+            <h3>Halo, perkenalkan</h3>
+            <p>
+                Saya <strong>Syah Daffa ZalvyPutra</strong>. Orang yang percaya bahwa usaha kecil yang konsisten
+                bisa membawa kita ke tempat yang besar. Saya berasal dari Lhokseumawe, Aceh, dan ingin terus
+                belajar, berkarya, serta membanggakan daerah asal saya.
+            </p>
+            <br>
+            <p>
+                Saya suka memasak, belajar hal baru, menulis dan berharap bisa bermanfaat untuk orang lain.
+                Bagi saya, perjalanan ini belum selesai tetapi baru saja dimulai.
+            </p>
+        </div>
+    </div>
+
+    <div class="halaman" id="tentang">
+        <h2 class="judul-halaman">Tentang Saya</h2>
+        <div class="kartu">
+            <h3>Siapa Saya?</h3>
+            <p>
+                Saya <strong>Syah Daffa ZalvyPutra</strong>, biasa dipanggil daffa atau syahdep, saya adalah <strong>siswa SMAS Sukma Bangsa Lhokseumawe</strong>. Saya lahir di <strong>Lhokseumawe</strong> tepatnya pada <strong>7 November 2010</strong>.
+                Saya bukan orang yang sudah sempurna, tetapi saya tipe orang yang ingin terus maju setiap hari.
+            </p>
+            <br>
+            <p>
+                Saya percaya bahwa latar belakang tidak menjadi penghalang untuk meraih mimpi. Dari kota kecil diujung pesisir, saya ingin belajar
+                banyak hal, terlebihnya tentang budaya dari masing-masing negara/suku/ras. Selain saya suka mempelajari budaya orang lain, saya juga suka membagikan budaya tempat asal saya, contoh seperti tarian, makanan, minuman atau tradisi khas Aceh.
+            </p>
+        </div>
+
+        <div class="kartu">
+            <h3>Apa yang Saya Sukai?</h3>
+            <ul>
+                <li>Bercerita atau mendengarkan cerita dari orang lain</li>
+                <li>Mempelajari budaya luar</li>
+                <li>Mengikuti kegiatan yang positif</li>
+                <li>Melihat potensi diri yang harus dikembangkan dan diubah</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="halaman" id="galeri">
+        <h2 class="judul-halaman">Galeri</h2>
+        <div class="kartu">
+            <p>Beberapa momen yang pernah saya lalui dan simpan dengan baik.</p>
+            <br>
+            <div class="grid-galeri">
+                <img src="foto-1.jpg" alt="Momen 1">
+                <img src="foto-2.jpg" alt="Momen 2">
+                <img src="foto-3.jpg" alt="Momen 3">
+                <img src="foto-4.jpg" alt="Momen 4">
+                <img src="foto-5.jpg" alt="Lhokseumawe">
+                <img src="foto-6.jpg" alt="Kegiatan">
+            </div>
+        </div>
+    </div>
+
+    <div class="halaman" id="prestasi">
+        <h2 class="judul-halaman">Kegiatan yang saya suka</h2>
+        <div class="kartu">
+            <div class="grid-prestasi">
+                <div class="prestasi">
+                    <h3>Berbicara Didepan Umum</h3>
+                    <p>Saya sangat suka berbicara dan berbagi cerita di depan orang banyak. Dulu saya sangat malu, tapi saya berusaha mengubahnya.</p>
+                </div>
+                <div class="prestasi">
+                    <h3>Kegiatan Pramuka</h3>
+                    <p>Melatih kedisiplinan, tanggung jawab, dan kemandirian. Dulu tidak suka, sekarang jadi sangat suka!</p>
+                </div>
+                <div class="prestasi">
+                    <h3>Belajar Teknologi</h3>
+                    <p>Saya suka belajar teknologi baru dan menggunakannya untuk hal-hal yang bermanfaat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="halaman" id="tujuan">
+        <h2 class="judul-halaman">Tujuan & Mimpi</h2>
+        <div class="kartu">
+            <h3>Apa tujuan saya?</h3>
+            <p>
+                Saya ingin melanjutkan pendidikan ke jenjang yang lebih tinggi, mendapatkan kesempatan
+                untuk tampil di panggung yang lebih luas, dan membuktikan bahwa siapa pun bisa berkembang
+                dari mana pun ia berasal.
+            </p>
+            <br>
+            <p>
+                Saya ingin belajar ke luar negeri, kemudian kembali memberikan manfaat untuk Aceh dan orang-orang
+                di sekitar saya.
+            </p>
+        </div>
+
+        <div class="kartu">
+            <h3>Pesan untuk Diri Sendiri</h3>
+            <p style="font-size: 16px; font-style: italic; color: var(--teks-fokus);">
+                "Jangan pernah malu dengan asal-usulmu. Jadikan itu alasan untuk bekerja lebih keras,
+                agar suatu saat nanti orang bisa bangga mengenalmu."
+            </p>
+        </div>
+    </div>
+
+    <div class="halaman" id="kontak">
+        <h2 class="judul-halaman">Kontak</h2>
+        <div class="kartu">
+            <h3>Hubungi Saya</h3>
+            <p>
+                Jika ingin bertanya, berkolaborasi, atau hanya menyapa, silakan hubungi saya melalui akun
+                media sosial saya.
+            </p>
+            <div class="tombol-grup">
+                <a href="https://www.tiktok.com/@syadepzalvyp?_r=1&_t=ZS-9APiuUDHzlg" target="_blank" class="tombol outline">TIKTOK</a>
+                <a href="https://www.instagram.com/ssyahdffaaa?dlrf=eXZ3ODVwZ2N1aWVs&utm_source=qr" target="_blank" class="tombol outline">INSTAGRAM</a>
+                <a href="https://www.threads.com/@ssyahdffaaa?igshid=NTc4MTIwNjQ2YQ==" target="_blank" class="tombol outline">THREADS</a>
+            </div>
+            <p style="margin-top: 18px; text-align: center; color: var(--teks-lembut);">
+                Lhokseumawe, Aceh — Indonesia
+            </p>
+        </div>
+    </div>
+
+    <div class="pemutar-lagu">
+        <h3>🎧 Backsound</h3>
+        <audio id="laguku" loop controls style="width: 100%; margin-top: 10px;">
+            <source src="laguku.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar lagu.
+        
+    </div>
+
+    <footer>
+        <p>SYAH DAFFA ZALVYPUTRA ©️ 2026</p>
+        <p>Tumbuh • Berkarya • Bermanfaat</p>
+    </footer>
+
+</div>
+
+<script>
+    const tombolMenu = document.getElementById('tombolMenu');
+    const menu = document.getElementById('menu');
+    const semuaHalaman = document.querySelectorAll('.halaman');
+    const linkMenu = document.querySelectorAll('[data-halaman]');
+    const lagu = document.getElementById('laguku');
+    let sudahMain = false;
+
+    tombolMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('tampil');
+    });
+
+    linkMenu.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('data-halaman');
+
+            semuaHalaman.forEach(h => h.classList.remove('aktif'));
+            document.getElementById(target).classList.add('aktif');
+
+            menu.classList.remove('tampil');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!tombolMenu.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove('tampil');
+        }
+    });
+
+    // Lagu main saat halaman diklik
+    document.addEventListener('mousedown', function mainLagu() {
+        if (!sudahMain) {
+            lagu.play();
+            sudahMain = true;
+            document.removeEventListener('mousedown', mainLagu);
+        }
+    });
+</script>
+
+</body>
+</html>
